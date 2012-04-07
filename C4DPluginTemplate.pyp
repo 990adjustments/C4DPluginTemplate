@@ -1,14 +1,17 @@
 '''
 C4DPluginTemplate v1.0
 
-Copyright: Erwin Santacruz 2010 (www.990adjustments.com)
-Written for CINEMA 4D R12.016
+Copyright: Erwin Santacruz 2012 (www.990adjustments.com)
+Written for CINEMA 4D R13
 
-Name-US: 
-Description-US: 
+Name-US: C4DPluginTemplate v1.0
+ 
+Description-US: Starting template for Maxon Cinema 4D Plugins. 
+Specifically, a command type plugin. Adjust to taste. This includes
+some of the information I use for my own plugins so make sure to
+adjust accordingly.
 
-
-Creation Date: 
+Creation Date: 04/07/12
 
 '''
 
@@ -16,9 +19,7 @@ import c4d
 from c4d import gui, plugins, bitmaps
 
 import time, sys, os, subprocess
-import logging, logging.handlers, shelve
-
-
+import logging, logging.handlers
 
 
 #Testing ids 1000001 - 1000010
@@ -27,10 +28,12 @@ __version__ = "1.0"
 __plugin_title__ = "C4DPluginTemplate v1.0"
 
 DUMMY = 1000
+BTN_ABOUT = 1001
 HELP_TEXT = ""
 
 
 class MainDialog(gui.GeDialog):
+    '''Main Dialog Class'''
 
     def InitValues(self):
         '''
@@ -38,7 +41,7 @@ class MainDialog(gui.GeDialog):
         True if successful, or False to signalize an error.
         '''
 
-        print("{0} loaded. (C) 2012 Erwin Santacruz. All rights reserved.".format(__plugin_title__))
+        print("{0} loaded. Copyright (C) 2012 Erwin Santacruz. All rights reserved.".format(__plugin_title__))
         return True
 
 
@@ -49,8 +52,25 @@ class MainDialog(gui.GeDialog):
         '''
 
         self.SetTitle(__plugin_title__)
+
+        # Create the menu
+        self.MenuFlushAll()
+
+        # About/Help menu
+        self.MenuSubBegin("C4DPluginTemplate")
+        self.MenuAddString(BTN_ABOUT, "About")
+        #self.MenuAddSeparator()
+        self.MenuSubEnd()
+
+        self.MenuFinished()
+
         return True
 
+
+    def about_C4DPluginTemplate(self):
+        '''Show About information dialog box.'''
+
+        gui.MessageDialog("{0}\nCopyright (C) 2012 Erwin Santacruz.\nAll rights reserved.\n\nwww.990adjustments.com\n".format(__plugin_title__), c4d.GEMB_OK)
 
     def Message(self, msg, result):
         '''
@@ -81,15 +101,11 @@ class MainDialog(gui.GeDialog):
         Override it to handle such events.
         '''
 
-        if id == DUMMY:
-            pass
+        if id == BTN_ABOUT:
+            self.about_C4DPluginTemplate()
 
         return True
 
-    def about_C4DPluginTemplate(self):
-        '''Show About information dialog box.'''
-
-        gui.MessageDialog("{0}\nby Erwin Santacruz 2012\n\nwww.990adjustments.com\n".format(__plugin_title__), c4d.GEMB_OK)
 
 
 class C4DPluginTemplate(plugins.CommandData):
@@ -101,7 +117,7 @@ class C4DPluginTemplate(plugins.CommandData):
         if self.dialog is None:
             self.dialog = MainDialog()
 
-        return self.dialog.Open(dlgtype = c4d.DLG_TYPE_ASYNC, pluginid = __plugin_id__, defaultw = 200, defaulth = 100)
+        return self.dialog.Open(dlgtype = c4d.DLG_TYPE_ASYNC, pluginid = __plugin_id__, defaultw = 300, defaulth = 400)
 
     def RestoreLayout(self, sec_ref):
         if self.dialog is None:

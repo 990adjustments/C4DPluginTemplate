@@ -22,6 +22,7 @@ import time, sys, os, subprocess
 import logging, logging.handlers
 
 
+
 #Testing ids 1000001 - 1000010
 __plugin_id__ = 1000001
 __version__ = "1.0"
@@ -30,6 +31,7 @@ __plugin_title__ = "C4DPluginTemplate v1.0"
 DUMMY = 1000
 BTN_ABOUT = 1001
 HELP_TEXT = ""
+
 
 
 class MainDialog(gui.GeDialog):
@@ -43,7 +45,6 @@ class MainDialog(gui.GeDialog):
 
         print("{0} loaded. Copyright (C) 2012 Erwin Santacruz. All rights reserved.".format(__plugin_title__))
         return True
-
 
     def CreateLayout(self):
         '''
@@ -65,7 +66,6 @@ class MainDialog(gui.GeDialog):
         self.MenuFinished()
 
         return True
-
 
     def about_C4DPluginTemplate(self):
         '''Show About information dialog box.'''
@@ -124,6 +124,7 @@ class C4DPluginTemplate(plugins.CommandData):
             self.dialog = MainDialog()
 
         return self.dialog.Restore(pluginid = __plugin_id__, secret = sec_ref)
+
 
 
 if __name__ == "__main__":

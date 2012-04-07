@@ -9,6 +9,10 @@ Specifically, a command type plugin. Adjust to taste. This includes
 some of the information I use for my own plugins so make sure to
 adjust accordingly.
 
+Also, remember to get a final ID over at
+[plugincafe.com](http://www.plugincafe.com/). The ID in the template
+is just for testing purposes.
+
 Installation & Usage
 --------------------
 

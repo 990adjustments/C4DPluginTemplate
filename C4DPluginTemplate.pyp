@@ -12,7 +12,6 @@ some of the information I use for my own plugins so make sure to
 adjust accordingly.
 
 Creation Date: 04/07/12
-
 '''
 
 import c4d

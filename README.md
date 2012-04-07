@@ -1,19 +1,16 @@
-CenterCut
+C4DPluginTemplate
 =========
 
 Description
 -----------
 
-CenterCut is a [Cinema 4D](http://www.maxon.net) script that
-toggles the center-cut safe zones in 16:9 viewers.
-This python script will show where cropping will
-occur on non-widescreen displays.  It will also
-toggle the viewer border opacity between 10% and 90%.
+Just a starting template for developing Maxon Cinema 4D plugins.
+Adjust to taste.
 
 Installation & Usage
 --------------------
 
-Just place script and icon in your scripts directory.
+Just fill in the blanks and place in your Cinema 4D plugins directory.
 
 Legal
 -----

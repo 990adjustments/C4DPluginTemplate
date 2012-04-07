@@ -4,8 +4,10 @@ C4DPluginTemplate
 Description
 -----------
 
-Just a starting template for developing Maxon Cinema 4D plugins.
-Adjust to taste.
+Starting template for Maxon Cinema 4D Plugins. 
+Specifically, a command type plugin. Adjust to taste. This includes
+some of the information I use for my own plugins so make sure to
+adjust accordingly.
 
 Installation & Usage
 --------------------

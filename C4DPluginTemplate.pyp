@@ -22,14 +22,17 @@ import logging, logging.handlers
 
 
 
-#Testing ids 1000001 - 1000010
+# Testing ids 1000001 - 1000010
+# be sure to use a unique ID obtained from www.plugincafe.com
 __plugin_id__ = 1000001
 __version__ = "1.0"
 __plugin_title__ = "C4DPluginTemplate v1.0"
 
 DUMMY = 1000
 BTN_ABOUT = 1001
-HELP_TEXT = ""
+
+# String shown in status bar
+HELP_TEXT = "C4DPluginTemplate"
 
 
 
@@ -116,7 +119,10 @@ class C4DPluginTemplate(plugins.CommandData):
         if self.dialog is None:
             self.dialog = MainDialog()
 
-        return self.dialog.Open(dlgtype = c4d.DLG_TYPE_ASYNC, pluginid = __plugin_id__, defaultw = 300, defaulth = 400)
+        return self.dialog.Open(dlgtype = c4d.DLG_TYPE_ASYNC,
+                                pluginid = __plugin_id__,
+                                defaultw = 300,
+                                defaulth = 400)
 
     def RestoreLayout(self, sec_ref):
         if self.dialog is None:
@@ -132,4 +138,9 @@ if __name__ == "__main__":
     iconPath = os.path.join(dir, "res", "icon.tif")
     icon.InitWith(iconPath)
 
-    plugins.RegisterCommandPlugin(id = __plugin_id__, str = __plugin_title__, info = 0, help = HELP_TEXT, dat = C4DPluginTemplate(), icon = icon)
+    plugins.RegisterCommandPlugin(id = __plugin_id__,
+                                  str = __plugin_title__,
+                                  info = 0, 
+                                  help = HELP_TEXT,
+                                  dat = C4DPluginTemplate(),
+                                  icon = icon)

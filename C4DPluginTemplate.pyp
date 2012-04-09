@@ -18,7 +18,7 @@ import c4d
 from c4d import gui, plugins, bitmaps
 
 import time, sys, os, subprocess
-import logging, logging.handlers
+import logging
 
 
 
@@ -33,6 +33,10 @@ BTN_ABOUT = 1001
 
 # String shown in status bar
 HELP_TEXT = "C4DPluginTemplate"
+
+
+
+logging.basicConfig(level=logging.DEBUG)
 
 
 
@@ -69,7 +73,7 @@ class MainDialog(gui.GeDialog):
 
         return True
 
-    def about_C4DPluginTemplate(self):
+    def escAboutC4DPluginTemplate(self):
         '''Show About information dialog box.'''
 
         gui.MessageDialog("{0}\nCopyright (C) 2012 Erwin Santacruz.\nAll rights reserved.\n\nwww.990adjustments.com\n".format(__plugin_title__), c4d.GEMB_OK)

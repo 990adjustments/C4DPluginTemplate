@@ -15,10 +15,11 @@ Creation Date: 04/07/12
 '''
 
 import c4d
-from c4d import gui, plugins, bitmaps
+from c4d import documents, gui, plugins, bitmaps
 
 import time, sys, os, subprocess
 import logging
+import webbrowser
 
 
 
@@ -30,6 +31,7 @@ __plugin_title__ = "C4DPluginTemplate v1.0"
 
 DUMMY = 1000
 BTN_ABOUT = 1001
+BTN_WEB = 1002
 
 # String shown in status bar
 HELP_TEXT = "C4DPluginTemplate"
@@ -64,8 +66,9 @@ class MainDialog(gui.GeDialog):
         self.MenuFlushAll()
 
         # About/Help menu
-        self.MenuSubBegin("C4DPluginTemplate")
+        self.MenuSubBegin("Info")
         self.MenuAddString(BTN_ABOUT, "About")
+        self.MenuAddString(BTN_WEB, "Website")
         #self.MenuAddSeparator()
         self.MenuSubEnd()
 
@@ -73,16 +76,22 @@ class MainDialog(gui.GeDialog):
 
         return True
 
-    def escAboutC4DPluginTemplate(self):
+    def ESAbout_C4DPluginTemplate(self):
         '''Show About information dialog box.'''
 
         gui.MessageDialog("{0}\nCopyright (C) 2012 Erwin Santacruz.\nAll rights reserved.\n\nwww.990adjustments.com\n".format(__plugin_title__), c4d.GEMB_OK)
+
+    def ESOpen_website(self):
+        '''Open Hangover Website'''
+
+        webbrowser.open('http://www.990adjustments.com/')
 
     def Message(self, msg, result):
         '''
         Override - Use to react to more messages.
         The return value depends on the message.
         '''
+
         pass
 
         return c4d.gui.GeDialog.Message(self, msg, result)
@@ -108,7 +117,10 @@ class MainDialog(gui.GeDialog):
         '''
 
         if id == BTN_ABOUT:
-            self.about_C4DPluginTemplate()
+            self.ESAbout_C4DPluginTemplate()
+
+        if id == BTN_WEB:
+            self.ESOpen_website()
 
         return True
 
